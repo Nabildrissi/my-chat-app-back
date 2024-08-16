@@ -16,6 +16,16 @@ services:
     ports:
       - "1025:1025"
       - "1080:1080"
-
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_HOSTNAME: keycloak
+    ports:
+      - "8089:8080"
+    command: start-dev
+    volumes:
+      - ./login-themes:/opt/keycloak/themes
 volumes:
   db_data:
